@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>HRAFNSMÁL</title>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/d3.min.js"></script>    
+    <link href="/css/hrafnsmal.css" media="screen" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+      <div id="welcome">HRAFNSMÁL</div>
+      <div id="loader">LOADING<blink>_</blink></div>
+      <div id="controls"></div>
+      <div id="chart"></div>
+      <div id="stats"></div>
+
+    <script type="text/javascript">
+
+        /**
+         * Start things up onclick
+         */
+        $('#welcome').click(function(){
+
+            $('#loader').show();
+            $('#welcome').hide();
+
+            window.hrafnsmal.events.init();
+            window.hrafnsmal.fillers.init();
+        });
+
+        /**
+         *  Display the chart
+         */
+        function show_chart(){
+            $('#loader').fadeOut('fast',function(){
+                $('#chart').fadeIn('slow');
+                $('#controls').fadeIn('slow');
+                $('#stats').fadeIn('slow');
+            });
+            $('body').unbind('chart_update', show_chart);
+        }
+
+        // register event handlers
+        $('body').on('data_update', show_chart);
+
+    </script>
+
+    <script src="/js/auth.js"></script>
+    <script src="/js/fillers.js"></script>
+    <script src="/js/models.js"></script>
+    <script src="/js/events.js"></script>
+    <script src="/js/sunburst.js"></script>
+    <script src="/js/stats.js"></script>
+    <script src="/js/middleware.js"></script>
+
+  </body>
+</html>
+
