@@ -33,19 +33,19 @@
          */
         function show_chart(){
             $('#loader').fadeOut('fast',function(){
-                $('#chart').fadeIn('slow');
+                $('#chart').fadeIn('fast');
                 $('#controls').fadeIn('slow');
                 $('#stats').fadeIn('slow');
             });
             $('body').unbind('chart_update', show_chart);
         }
 
-        // register event handlers
+        // load the chart after we get our first event.
         $('body').on('data_update', show_chart);
 
     </script>
 
-    <script src="/js/auth.js"></script>
+    <script src="/js/config.js"></script>
     <script src="/js/fillers.js"></script>
     <script src="/js/models.js"></script>
     <script src="/js/events.js"></script>

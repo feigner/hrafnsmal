@@ -21,12 +21,13 @@ window.hrafnsmal.events = (function(){
      * Kick things off
      */
     init = function () {
-        if (window.hrafnsmal.auth.access_token && 
-            window.hrafnsmal.auth.event_api){
+        // TODO: real token / api validation
+        if (window.hrafnsmal.config.access_token && 
+            window.hrafnsmal.config.event_api){
             load_historical_events(60*60*24*1*1000);
         }
         else{
-            console.log('auth: No access_token / event_api defined.');
+            console.log('config: No access_token / event_api defined.');
         }
     },
 
@@ -37,8 +38,8 @@ window.hrafnsmal.events = (function(){
      */
     fetch_events = function(page_number, callback){
         var _events = [];
-        $.getJSON(window.hrafnsmal.auth.event_api + '?page=' + page_number + 
-                  '&access_token=' + window.hrafnsmal.auth.access_token, function(events) {
+        $.getJSON(window.hrafnsmal.config.event_api + '?page=' + page_number + 
+                  '&access_token=' + window.hrafnsmal.config.access_token, function(events) {
             $.each(events, function(index, event){
                 _events.push(event); 
             });

@@ -25,7 +25,7 @@ window.hrafnsmal.middleware = (function(){
         push = window.hrafnsmal.models.Push(api_event);
         $.each(api_event.payload.commits, function(i, c){
             $.ajax({
-                url: c.url + '?access_token=' + window.hrafnsmal.auth.access_token,
+                url: c.url + '?access_token=' + window.hrafnsmal.config.access_token,
                 dataType: 'json',
                 success: function(data){ 
                     commit = window.hrafnsmal.models.Commit(data);
